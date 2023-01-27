@@ -1,0 +1,42 @@
+{
+  "name": "DeleteYoutubeWatchLater",
+  "description": "Why youtube doesn't make WatchLater delete shortcut?",
+  "version": "1.1",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": ["activeTab", "scripting"],
+  "action": {
+    "default_popup": "popup.html",
+	"default_icon": {
+      "16": "/images/deleteList16.png",
+      "32": "/images/deleteList32.png",
+      "48": "/images/deleteList48.png",
+      "128": "/images/deleteList128.png"
+    }
+  },
+  "icons": {
+    "16": "/images/deleteList16.png",
+    "32": "/images/deleteList32.png",
+    "48": "/images/deleteList48.png",
+    "128": "/images/deleteList128.png"
+  },
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": ["https://*.youtube.com/*"],
+      "css": ["button.css"],
+      "js": ["content_scripts/content-script.js"]
+    }
+  ],
+  "commands": {
+      "_execute_action": {
+        "suggested_key": {
+          "default": "Ctrl+Q",
+          "mac": "Command+Q"
+        }
+      }
+    }
+}
